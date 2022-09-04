@@ -19,6 +19,11 @@ CopyQtDll("Qt6Gui")
 # project sources
 
 set(SOURCES
+    gui/gui_main_window.hpp
+    gui/gui_main_window.cpp
+
+    utils/utl_suplementary_widget_functions.hpp
+
     main.cpp
 )
 
@@ -33,6 +38,13 @@ add_executable(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/${SOURCES})
 if(WIN32)
     set_target_properties(${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE TRUE)
 endif()
+
+#-------------------------------------------------------------------#
+# include directories
+
+target_include_directories(${PROJECT_NAME}
+    PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
+)
 
 #-------------------------------------------------------------------#
 # link libraries

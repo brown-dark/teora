@@ -1,13 +1,13 @@
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QMessageBox>
+
+#include "gui/gui_main_window.hpp"
 
 int main( int argc, char *argv[] )
 {
     QApplication qtApp(argc, argv);
 
-    QMessageBox msgbox(nullptr);
-    msgbox.setText("Hello, Teora!");
-    msgbox.show();
+    teora::gui::GuiMainWindow gmw;
+    gmw.show();
 
     return qtApp.exec();
 }
