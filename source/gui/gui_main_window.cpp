@@ -17,10 +17,6 @@
 namespace teora {
 namespace gui {
 
-namespace {
-    const QRect kScreenGeometry = QApplication::screens().first()->geometry();
-} // namespace
-
 // TODO: load strings from resources.
 
 GuiMainWindow::GuiMainWindow()
@@ -37,7 +33,8 @@ GuiMainWindow::prepareMainWindow()
 {
     setCentralWidget(m_textEdit);
 
-    resize(kScreenGeometry.width() / 2, kScreenGeometry.height() / 2);
+    const QRect screenGeometry = QApplication::screens().first()->geometry();
+    resize(screenGeometry.width() / 2, screenGeometry.height() / 2);
 }
 
 void
