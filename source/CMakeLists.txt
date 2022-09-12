@@ -19,9 +19,17 @@ CopyQtDll("Qt6Gui")
 # project sources
 
 set(SOURCES
-    gui/gui_main_window.hpp
-    gui/gui_main_window.cpp
+    core/core_disk_file_reader.cpp
+    core/core_disk_file_reader.hpp
 
+    gui/gui_main_window_status_bar.cpp
+    gui/gui_main_window_status_bar.hpp
+    gui/gui_main_window.cpp
+    gui/gui_main_window.hpp
+    gui/gui_text_edit_widget.hpp
+    gui/gui_text_edit_widget.cpp
+
+    utils/utl_message_box.hpp
     utils/utl_suplementary_widget_functions.hpp
 
     main.cpp

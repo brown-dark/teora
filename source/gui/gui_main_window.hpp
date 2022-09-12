@@ -7,28 +7,38 @@
 class QAction;
 class QTextEdit;
 
-namespace teora{
+namespace teora::gui
+{
+    class MainWindowStatusBar;
+    class TextEditWidget;
+}
+
+namespace teora {
 namespace gui {
 
-class GuiMainWindow final
+class MainWindow final
     :   public QMainWindow
 {
     Q_OBJECT
 
 private:
 
-    QTextEdit * m_textEdit;
+    TextEditWidget * m_textEdit;
+    MainWindowStatusBar * m_statusBar;
+
     QAction * m_openFileAction;
 
 public:
 
-    GuiMainWindow();
+    MainWindow();
 
 private:
 
     void prepareMainWindow();
     void addMenuBar();
+    void addStatusBar();
     void initializeActions();
+    void doSignalSlotConnections();
 
 private slots:
 

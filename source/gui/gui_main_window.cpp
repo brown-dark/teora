@@ -2,6 +2,12 @@
 
 #include "gui_main_window.hpp"
 
+#include "gui_main_window_status_bar.hpp"
+#include "gui_text_edit_widget.hpp"
+
+#include "core/core_disk_file_reader.hpp"
+
+#include "utils/utl_message_box.hpp"
 #include "utils/utl_suplementary_widget_functions.hpp"
 
 #include <QApplication>
@@ -10,26 +16,25 @@
 #include <QFileDialog>
 #include <QMenu>
 #include <QMenuBar>
-#include <QMessageBox>
 #include <QScreen>
-#include <QTextEdit>
 
 namespace teora {
 namespace gui {
 
-// TODO: load strings from resources.
-
-GuiMainWindow::GuiMainWindow()
-    :   m_textEdit(new QTextEdit(this))
+MainWindow::MainWindow()
+    :   m_textEdit(new TextEditWidget(this))
     ,   m_openFileAction(new QAction(this))
+    ,   m_statusBar(new MainWindowStatusBar(this))
 {
     prepareMainWindow();
     addMenuBar();
+    addStatusBar();
     initializeActions();
+    doSignalSlotConnections();
 }
 
 void
-GuiMainWindow::prepareMainWindow()
+MainWindow::prepareMainWindow()
 {
     setCentralWidget(m_textEdit);
 
@@ -38,7 +43,7 @@ GuiMainWindow::prepareMainWindow()
 }
 
 void
-GuiMainWindow::addMenuBar()
+MainWindow::addMenuBar()
 {
     QMenu * fileMenu = new QMenu("File", this);
     fileMenu->addAction(m_openFileAction);
@@ -47,19 +52,43 @@ GuiMainWindow::addMenuBar()
 }
 
 void
-GuiMainWindow::initializeActions()
+MainWindow::addStatusBar()
+{
+    addToolBar(Qt::ToolBarArea::BottomToolBarArea, m_statusBar);
+}
+
+void
+MainWindow::initializeActions()
 {
     utils::initializeAction(
             m_openFileAction
         ,   this
-        ,   &GuiMainWindow::slotOnOpenFileActionTriggered
+        ,   &MainWindow::slotOnOpenFileActionTriggered
         ,   "Open File"
         ,   "Open file on a disk"
     );
 }
 
 void
-GuiMainWindow::slotOnOpenFileActionTriggered()
+MainWindow::doSignalSlotConnections()
+{
+    connect(
+            m_textEdit
+        ,   &TextEditWidget::signalCursorPositionChanged
+        ,   m_statusBar
+        ,   &MainWindowStatusBar::slotOnCursorPositionChanged
+    );
+
+    connect(
+            m_textEdit
+        ,   &TextEditWidget::signalWordsCountChanged
+        ,   m_statusBar
+        ,   &MainWindowStatusBar::slotOnWordsCountChanged
+    );
+}
+
+void
+MainWindow::slotOnOpenFileActionTriggered()
 {
     QString pathToFile =
         QFileDialog::getOpenFileName(
@@ -69,16 +98,16 @@ GuiMainWindow::slotOnOpenFileActionTriggered()
             ,   "*.txt"
         );
 
-    QFile file(pathToFile);
-    if(!file.open(QIODevice::ReadOnly))
+    QString fileContent;
+
+    if(!core::DiskFileReader().readFile(pathToFile, fileContent))
     {
-        QMessageBox msgbox;
-        msgbox.setText("Failed to open file");
-        msgbox.setWindowTitle("Error");
-        msgbox.show();
+        utils::showErrorMessageBox(
+            QString("Failed to load file at '%1'.").arg(pathToFile)
+        );
     }
 
-    m_textEdit->insertPlainText(file.readAll());
+    m_textEdit->insertPlainText(fileContent);
 }
 
 } // namespace gui

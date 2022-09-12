@@ -6,8 +6,8 @@ int main( int argc, char *argv[] )
 {
     QApplication qtApp(argc, argv);
 
-    teora::gui::GuiMainWindow gmw;
-    gmw.show();
+    teora::gui::MainWindow mw;
+    mw.show();
 
     return qtApp.exec();
 }
