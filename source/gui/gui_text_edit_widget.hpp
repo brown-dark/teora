@@ -8,6 +8,7 @@ namespace teora::core
 {
     class DiskFileReader;
 }
+class QFile;
 
 namespace teora::gui
 {
@@ -20,6 +21,9 @@ class TextEditWidget final
 public:
 
     TextEditWidget(QWidget * _parent);
+
+    bool loadData();
+    bool saveData();
 
 private:
 
@@ -34,6 +38,10 @@ private slots:
 
     void slotOnCursorPositionChanged();
     void slotOnTextChanged();
+
+private:
+
+    QFile * m_file;
 
 };
 

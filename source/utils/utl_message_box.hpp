@@ -7,16 +7,17 @@
 namespace teora::gui::utils
 {
 
-static void showErrorMessageBox(QString const & _message)
+static void showErrorMessageBox(QWidget * _parent, QString const & _message)
 {
-    QMessageBox msgBox;
-    msgBox.setWindowTitle("ERROR");
-    msgBox.setText(_message);
-    msgBox.setIcon(QMessageBox::Icon::Critical);
+    QMessageBox * msgBox = new QMessageBox(_parent);
+    msgBox->setWindowTitle("ERROR");
+    msgBox->setText(_message);
+    msgBox->setIcon(QMessageBox::Icon::Critical);
 
-    msgBox.setStandardButtons(QMessageBox::StandardButton::Ok);
+    msgBox->setStandardButtons(QMessageBox::StandardButton::Ok);
 
-    msgBox.show();
+    msgBox->exec();
+    msgBox->deleteLater();
 }
 
 } // namespace teora::gui::utils

@@ -19,9 +19,6 @@ CopyQtDll("Qt6Gui")
 # project sources
 
 set(SOURCES
-    core/core_disk_file_reader.cpp
-    core/core_disk_file_reader.hpp
-
     gui/gui_main_window_status_bar.cpp
     gui/gui_main_window_status_bar.hpp
     gui/gui_main_window.cpp

@@ -26,6 +26,7 @@ private:
     MainWindowStatusBar * m_statusBar;
 
     QAction * m_openFileAction;
+    QAction * m_saveFileAction;
 
 public:
 
@@ -42,6 +43,7 @@ private:
 private slots:
 
     void slotOnOpenFileActionTriggered();
+    void slotOnSaveFileActionTriggered();
 
 };
 

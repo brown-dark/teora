@@ -5,15 +5,11 @@
 #include "gui_main_window_status_bar.hpp"
 #include "gui_text_edit_widget.hpp"
 
-#include "core/core_disk_file_reader.hpp"
-
 #include "utils/utl_message_box.hpp"
 #include "utils/utl_suplementary_widget_functions.hpp"
 
 #include <QApplication>
 #include <QAction>
-#include <QDir>
-#include <QFileDialog>
 #include <QMenu>
 #include <QMenuBar>
 #include <QScreen>
@@ -23,8 +19,9 @@ namespace teora::gui
 
 MainWindow::MainWindow()
     :   m_textEdit(new TextEditWidget(this))
-    ,   m_openFileAction(new QAction(this))
     ,   m_statusBar(new MainWindowStatusBar(this))
+    ,   m_openFileAction(new QAction(this))
+    ,   m_saveFileAction(new QAction(this))
 {
     prepareMainWindow();
     addMenuBar();
@@ -47,6 +44,7 @@ MainWindow::addMenuBar()
 {
     QMenu * fileMenu = new QMenu("File", this);
     fileMenu->addAction(m_openFileAction);
+    fileMenu->addAction(m_saveFileAction);
 
     menuBar()->addMenu(fileMenu);
 }
@@ -66,6 +64,14 @@ MainWindow::initializeActions()
         ,   &MainWindow::slotOnOpenFileActionTriggered
         ,   "Open File"
         ,   "Open file on a disk"
+    );
+
+    utils::initializeAction(
+            m_saveFileAction
+        ,   this
+        ,   &MainWindow::slotOnSaveFileActionTriggered
+        ,   "Save File"
+        ,   "Save file on a disk"
     );
 }
 
@@ -90,24 +96,13 @@ MainWindow::doSignalSlotConnections()
 void
 MainWindow::slotOnOpenFileActionTriggered()
 {
-    QString pathToFile =
-        QFileDialog::getOpenFileName(
-                this
-            ,   "Open File"
-            ,   QDir::currentPath()
-            ,   "*.txt"
-        );
+    m_textEdit->loadData();
+}
 
-    QString fileContent;
-
-    if(!core::DiskFileReader().readFile(pathToFile, fileContent))
-    {
-        utils::showErrorMessageBox(
-            QString("Failed to load file at '%1'.").arg(pathToFile)
-        );
-    }
-
-    m_textEdit->insertPlainText(fileContent);
+void
+MainWindow::slotOnSaveFileActionTriggered()
+{
+    m_textEdit->saveData();
 }
 
 } // namespace teora::gui
