@@ -6,10 +6,10 @@ cmake_minimum_required(VERSION 3.20)
 #-------------------------------------------------------------------#
 # find Qt6 libraries
 
-set(QT_VER "6.3.1")
+set(QT_VER "6.4.0")
 
 if(WIN32)
-    set(QT6_INSTALL_DIR "C:/Qt")
+    set(QT6_INSTALL_DIR "D:/Buildtools/Qt")
     set(QT6_OS_PREFIX "msvc2019_64")
 endif()
 
