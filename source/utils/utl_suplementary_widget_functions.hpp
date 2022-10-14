@@ -4,9 +4,8 @@
 
 #include <QAction>
 
-namespace teora {
-namespace gui {
-namespace utils {
+namespace teora::gui::utils
+{
 
 template<typename T, typename TSlot>
 static void initializeAction(
@@ -32,6 +31,4 @@ static void initializeAction(
     _object->connect(_action, &QAction::triggered, _object, _slot);
 }
 
-} // namespace utils
-} // namespace gui
-} // namespace teora
+} // namespace teora::gui::utils

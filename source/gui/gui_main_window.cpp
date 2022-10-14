@@ -18,8 +18,8 @@
 #include <QMenuBar>
 #include <QScreen>
 
-namespace teora {
-namespace gui {
+namespace teora::gui
+{
 
 MainWindow::MainWindow()
     :   m_textEdit(new TextEditWidget(this))
@@ -110,5 +110,4 @@ MainWindow::slotOnOpenFileActionTriggered()
     m_textEdit->insertPlainText(fileContent);
 }
 
-} // namespace gui
-} // namespace teora
+} // namespace teora::gui

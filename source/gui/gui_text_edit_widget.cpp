@@ -4,8 +4,8 @@
 
 #include <QRegularExpression>
 
-namespace teora {
-namespace gui {
+namespace teora::gui
+{
 
 TextEditWidget::TextEditWidget(QWidget * _parent)
     :   QPlainTextEdit(_parent)
@@ -57,5 +57,4 @@ TextEditWidget::slotOnTextChanged()
     emit signalWordsCountChanged(wordsCount);
 }
 
-} // namespace gui
-} // namespace teora
+} // namespace teora::gui

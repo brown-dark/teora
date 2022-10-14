@@ -4,9 +4,8 @@
 
 #include <QMessageBox>
 
-namespace teora {
-namespace gui {
-namespace utils {
+namespace teora::gui::utils
+{
 
 static void showErrorMessageBox(QString const & _message)
 {
@@ -20,7 +19,4 @@ static void showErrorMessageBox(QString const & _message)
     msgBox.show();
 }
 
-
-} // namespace utils
-} // namespace gui
-} // namespace teora
+} // namespace teora::gui::utils

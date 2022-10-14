@@ -4,8 +4,8 @@
 
 class QString;
 
-namespace teora {
-namespace core {
+namespace teora::core
+{
 
 class DiskFileReader
 {
@@ -16,5 +16,4 @@ public:
 
 };
 
-} // namespace core
-} // namespace teora
+} // namespace teora::core

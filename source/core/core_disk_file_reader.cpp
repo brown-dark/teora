@@ -4,8 +4,8 @@
 
 #include <QFile>
 
-namespace teora {
-namespace core {
+namespace teora::core
+{
 
 bool
 DiskFileReader::readFile(QString const & _pathToFile, QString & _data) const
@@ -22,5 +22,4 @@ DiskFileReader::readFile(QString const & _pathToFile, QString & _data) const
     return true;
 }
 
-} // namespace core
-} // namespace teora
+} // namespace teora::core

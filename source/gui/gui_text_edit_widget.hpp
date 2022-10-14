@@ -9,8 +9,8 @@ namespace teora::core
     class DiskFileReader;
 }
 
-namespace teora {
-namespace gui {
+namespace teora::gui
+{
 
 class TextEditWidget final
     :   public QPlainTextEdit
@@ -37,5 +37,4 @@ private slots:
 
 };
 
-} // namespace gui
 } // namespace teora::gui

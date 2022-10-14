@@ -4,10 +4,11 @@
 
 #include <QLabel>
 
-namespace teora {
-namespace gui {
+namespace teora::gui
+{
 
-namespace {
+namespace
+{
     constexpr const char CursorPositionLabelTextTemplate[] = "Line: %1, Column: %2";
     constexpr const char WordsCountLabelTextTemplate[] = "Words: %1";
 }
@@ -60,5 +61,4 @@ MainWindowStatusBar::slotOnWordsCountChanged(int _wordsCount /*= 0*/)
     m_wordsCountLabel->setText(QString(WordsCountLabelTextTemplate).arg(_wordsCount));
 }
 
-} // namespace gui
-} // namespace teora
+} // namespace teora::gui

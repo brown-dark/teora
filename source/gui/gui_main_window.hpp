@@ -4,17 +4,16 @@
 
 #include <QMainWindow>
 
-class QAction;
-class QTextEdit;
-
 namespace teora::gui
 {
     class MainWindowStatusBar;
     class TextEditWidget;
 }
+class QAction;
+class QTextEdit;
 
-namespace teora {
-namespace gui {
+namespace teora::gui
+{
 
 class MainWindow final
     :   public QMainWindow
@@ -46,5 +45,4 @@ private slots:
 
 };
 
-} // namespace gui
-} // namespace teora
+} // namespace teora::gui

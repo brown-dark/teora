@@ -6,8 +6,8 @@
 
 class QLabel;
 
-namespace teora {
-namespace gui {
+namespace teora::gui
+{
 
 class MainWindowStatusBar final
     :   public QToolBar
@@ -38,5 +38,4 @@ public slots:
 
 };
 
-} // namespace gui
-} // namespace teora
+} // namespace teora::gui
