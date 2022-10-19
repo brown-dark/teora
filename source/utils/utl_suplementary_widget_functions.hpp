@@ -14,6 +14,8 @@ static void initializeAction(
     ,   TSlot _slot
     ,   QString _text
     ,   QString _explanation
+    ,   QString _shortcut
+    ,   QString _pathToIcon
 )
 {
     assert(_action != nullptr);
@@ -25,6 +27,14 @@ static void initializeAction(
     {
         _action->setToolTip(_explanation);
         _action->setWhatsThis(_explanation);
+    }
+    if(!_shortcut.isEmpty())
+    {
+        _action->setShortcut(_shortcut);
+    }
+    if(!_pathToIcon.isEmpty())
+    {
+        _action->setIcon(QIcon(_pathToIcon));
     }
 
     _object->addAction(_action);

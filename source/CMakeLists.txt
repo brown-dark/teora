@@ -10,6 +10,7 @@ project(teora_app)
 
 set(CMAKE_AUTOMOC ON)
 
+CopyIcons()
 CopyQtPlatforms()
 CopyQtDll("Qt6Core")
 CopyQtDll("Qt6Widgets")

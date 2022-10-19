@@ -28,10 +28,23 @@ endfunction(CopyQtDll)
 
 function(CopyQtPlatforms)
     execute_process(
-        COMMAND python3 ${TEORA_ROOT_DIR}/build_tools/scripts/copy_qt6_platforms_to_build.py
-        ${TEORA_BUILD_DIR}
+        COMMAND python3 ${TEORA_ROOT_DIR}/build_tools/scripts/copy_utils.py
         ${QT6_FULL_PATH}/plugins/platforms/
+        ${TEORA_BUILD_DIR}
+        "platforms"
     )
 endfunction(CopyQtPlatforms)
+
+#-------------------------------------------------------------------#
+# Copy icons folder
+
+function(CopyIcons)
+    execute_process(
+        COMMAND python3 ${TEORA_ROOT_DIR}/build_tools/scripts/copy_utils.py
+        ${TEORA_ROOT_DIR}/resources/icons/
+        ${TEORA_BUILD_DIR}
+        "icons"
+    )
+endfunction(CopyIcons)
 
 #-------------------------------------------------------------------#

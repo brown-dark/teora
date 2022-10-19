@@ -64,6 +64,8 @@ MainWindow::initializeActions()
         ,   &MainWindow::slotOnOpenFileActionTriggered
         ,   "Open File"
         ,   "Open file on a disk"
+        ,   "Ctrl+O"
+        ,   "icons/open.png"
     );
 
     utils::initializeAction(
@@ -72,6 +74,8 @@ MainWindow::initializeActions()
         ,   &MainWindow::slotOnSaveFileActionTriggered
         ,   "Save File"
         ,   "Save file on a disk"
+        ,   "Ctrl+S"
+        ,   "icons/save.png"
     );
 }
 
