@@ -1,10 +1,10 @@
 import sys, platform, glob, shutil
 
 
-def copyQt6LibsToBuild(qtLibName, destination, qtPath, isDebug):
+def copyQt6LibsToBuild(qtLibName, destination, qtPath, build_type):
     if platform.system() == 'Windows':
         # Appending 'd' if we need a debug version of the lib
-        if isDebug:
+        if build_type == 'Debug':
             qtLibName = qtLibName + 'd'
         # Appending '.dll' extention
         qtLibName = qtLibName + '.dll'

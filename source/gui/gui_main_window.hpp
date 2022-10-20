@@ -25,8 +25,19 @@ private:
     TextEditWidget * m_textEdit;
     MainWindowStatusBar * m_statusBar;
 
+    QAction * m_newFileAction;
     QAction * m_openFileAction;
     QAction * m_saveFileAction;
+    QAction * m_exitApplicationAction;
+
+    QAction * m_switchThemeAction;
+    QAction * m_renderNonPrintableSymbolsAction;
+
+    QAction * m_searchAction;
+    QAction * m_checkSpellingAction;
+
+    QAction * m_settingsAction;
+    QAction * m_aboutAction;
 
 public:
 
@@ -42,9 +53,19 @@ private:
 
 private slots:
 
+    void slotOnNewFileActionTriggered();
     void slotOnOpenFileActionTriggered();
     void slotOnSaveFileActionTriggered();
+    void slotOnExitApplicationActionTriggered();
 
+    void slotOnSwitchThemeActionTriggered();
+    void slotOnRenderNonPrintableSymbolsActionTriggered();
+
+    void slotOnSearchActionTriggered();
+    void slotOnCheckSpellingActionTriggered();
+
+    void slotOnSettingsActionTriggered();
+    void slotOnAboutActionTriggered();
 };
 
 } // namespace teora::gui

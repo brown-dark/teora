@@ -19,7 +19,7 @@ function(CopyQtDll LIB_NAME)
         ${LIB_NAME}
         ${TEORA_BUILD_DIR}
         ${QT6_FULL_PATH}/bin/
-        $<IF:$<CONFIG:Debug>,True,False>
+        ${CMAKE_BUILD_TYPE}
     )
 endfunction(CopyQtDll)
 
