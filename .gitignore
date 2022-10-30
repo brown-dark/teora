@@ -33,5 +33,4 @@
 
 # Teora specific
 .vscode/
-debug/
-release/
+build
